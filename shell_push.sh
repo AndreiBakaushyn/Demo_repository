@@ -2,7 +2,7 @@
 
 echo "*  Push to GitHub *"
 git push origin_github --all
-git push origin_github --all
+
 
 echo "*  Push to Bitbucket  *"
 git push origin_bitbucket_new --all
