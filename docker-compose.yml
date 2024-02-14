@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  app:
+    image: skefil/myapp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+  # Если есть зависимые сервисы, добавьте их здесь
+  # db:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_DB: exampledb
+  #     POSTGRES_USER: exampleuser
+  #     POSTGRES_PASSWORD: examplepass
