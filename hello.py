@@ -1,3 +1,3 @@
 # hello.py
-print("Hello, GitHub Actions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!")
+print("Hello, GitHub Actions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!")
 
