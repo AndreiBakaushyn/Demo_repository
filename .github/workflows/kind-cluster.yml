@@ -1,36 +1,13 @@
-# name: KinD Cluster Setup
-# on:
-#   push:
-#     branches:
-#       - master
-
-# jobs:
-#   setup-kind-cluster:
-#     runs-on: [ubuntu-latest]
-#     steps:
-#       - name: Set up KinD
-#         uses: kyma-project/cli@2.19.1
-#         with:
-#           args: cluster create my-cluster
-
-
 name: KinD Cluster Setup
-on:
-  push:
-    branches:
-      - master
+
+on: [push]
 
 jobs:
-  setup-kind-cluster:
-    runs-on: [ubuntu-latest]
+  setup-kind:
+    runs-on: ubuntu-latest
     steps:
-      - name: Set up KinD
-        run: |
-          curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.11.1/kind-linux-amd64
-          chmod +x ./kind
-          ./kind create cluster --name my-cluster
-      - name: Check Cluster Info
-        run: |
-          kubectl cluster-info
-          kubectl get nodes 
-          kubectl version
+    - uses: actions/checkout@v2
+    - name: Setup KinD
+      uses: engineerd/setup-kind@v0.5.0
+    - name: Get Cluster Info
+      run: kubectl cluster-info
