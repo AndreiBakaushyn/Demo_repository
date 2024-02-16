@@ -1,0 +1,21 @@
+name: Create cluster using Minikube
+on: [push]
+jobs:
+  minikube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository  
+        uses: actions/checkout@master
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@latest
+      - name: kubectl
+        run: |
+          kubectl cluster-info 
+          kubectl get pods -n kube-system 
+          echo "current-context:" $(kubectl config current-context) 
+          echo "environment-kubeconfig:" ${KUBECONFIG} 
+          kubectl get nodes
+          kubectl get pods -A
+          kubectl version
+        shell: bash
